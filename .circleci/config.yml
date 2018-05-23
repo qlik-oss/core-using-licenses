@@ -28,7 +28,7 @@ jobs:
       - run:
           name: Run tests without license
           command: |
-          ACCEPT_EULA=yes docker-compose -f docker-compose.only-engine.yml up -d
-          sleep 10 # How should we handle this?
-          go test -timeout 30s  test/no_license_test.go
-          docker-compose -f docker-compose.only-engine.yml down
+            ACCEPT_EULA=yes docker-compose -f docker-compose.only-engine.yml up -d
+            sleep 10 # How should we handle this?
+            go test -timeout 30s  test/no_license_test.go
+            docker-compose -f docker-compose.only-engine.yml down
