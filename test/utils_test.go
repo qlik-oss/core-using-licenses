@@ -17,11 +17,16 @@ var (
 
 func ConnectToEngineAndReturnOnConnectedEventMessage(ctx context.Context, sessionID int, headers http.Header) (string, error) {
 	headers.Set("X-Qlik-Session", fmt.Sprintf("%d", sessionID))
-	global, _ := enigma.Dialer{}.Dial(ctx, "ws://localhost:19076/app/engineData/", headers)
+	global, err := enigma.Dialer{}.Dial(ctx, "ws://localhost:19076/app/engineData/", headers)
+
+	if err != nil {
+		fmt.Println(err.Error())
+		return "", err
+	}
 
 	sessionMessages := global.SessionMessageChannel()
 	message := "Channel Closed before reciving OnConnected Message from Engine"
-	err := errors.New(message)
+	err = errors.New(message)
 
 	for sessionEvent := range sessionMessages {
 		if sessionEvent.Topic == "OnConnected" {
