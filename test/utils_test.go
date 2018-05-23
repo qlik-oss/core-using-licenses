@@ -19,6 +19,7 @@ var (
 func ConnectToEngineAndReturnOnConnectedEventMessage(ctx context.Context, sessionID int, headers http.Header) (string, error) {
 	headers.Set("X-Qlik-Session", fmt.Sprintf("%d", sessionID))
 	host := os.Getenv("TEST_HOST")
+	fmt.Print("Host: ", host)
 	global, err := enigma.Dialer{}.Dial(ctx, fmt.Sprintf("ws://%s:19076/app/engineData/", host), headers)
 
 	if err != nil {
