@@ -33,5 +33,6 @@ jobs:
             CONTAINER_ID=$(docker ps -aqf "name=core-using-licenses_qix-engine_1")
             TEST_HOST=$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.Gateway}}{{end}}' "$CONTAINER_ID")
             echo $TEST_HOST
+            export TEST_HOST
             go test -timeout 30s test/no_license_test.go test/utils_test.go
             docker-compose -f docker-compose.only-engine.yml down
