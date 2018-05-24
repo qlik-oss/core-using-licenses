@@ -11,15 +11,22 @@ import (
 	enigma "github.com/qlik-oss/enigma-go"
 )
 
+func getTestHost() string {
+	testHost = os.Getenv("TEST_HOST")
+	if testHost == "" {
+		return "localhost"
+	}
+	return testHost
+}
+
 var (
 	ctx     = context.Background()
 	headers = make(http.Header, 1)
-	host    = os.Getenv("TEST_HOST")
+	host    = getTestHost()
 )
 
 func ConnectToEngineAndReturnOnConnectedEventMessage(ctx context.Context, sessionID int, headers http.Header) (string, error) {
 	headers.Set("X-Qlik-Session", fmt.Sprintf("%d", sessionID))
-	fmt.Println("Host: ", host)
 	global, err := enigma.Dialer{}.Dial(ctx, fmt.Sprintf("ws://%s:19076/app/engineData/", host), headers)
 
 	if err != nil {
