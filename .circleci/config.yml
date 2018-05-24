@@ -36,7 +36,7 @@ jobs:
             # Start a container for test execution
             TEST_CONTAINER=$(docker run -e TEST_HOST=$TEST_HOST -d golang:1.9-alpine tail -f /dev/null)
             # Copy code into container
-            docker cp . $TEST_CONTAINER:/go/src/license_test
+            docker cp /go/src/github.com/qlik-oss/core-using-licenses/ $TEST_CONTAINER:/go/src/license_test/
             # Execute tests
             docker exec $TEST_CONTAINER sh -c 'go test -timeout 30s go/src/license_test/test/no_license_test.go go/src/license_test/test/utils_test.go'
             # Bring down the docker-compose
