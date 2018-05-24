@@ -12,7 +12,7 @@ import (
 )
 
 func getTestHost() string {
-	testHost = os.Getenv("TEST_HOST")
+	testHost := os.Getenv("TEST_HOST")
 	if testHost == "" {
 		return "localhost"
 	}
