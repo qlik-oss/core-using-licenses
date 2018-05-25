@@ -54,16 +54,14 @@ func getLicensesMetrics() string {
 	return string(body)
 }
 
-func getLicenseTimeConsumed() int {
-	licensesMetrics := getLicensesMetrics()
+func getLicenseTimeConsumed(licensesMetrics string) int {
 	re := regexp.MustCompile(`\nlicense_time_consumption{.*}\s(\d+)\n`)
 	matched := re.FindStringSubmatch(licensesMetrics)
 	timeConsumed, _ := strconv.Atoi(matched[1])
 	return timeConsumed
 }
 
-func getLicenseTimeTotal() int {
-	licensesMetrics := getLicensesMetrics()
+func getLicenseTimeTotal(licensesMetrics string) int {
 	re := regexp.MustCompile(`\nlicense_time_total{.*}\s(\d+)\n`)
 	matched := re.FindStringSubmatch(licensesMetrics)
 	totalTime, _ := strconv.Atoi(matched[1])
@@ -73,8 +71,8 @@ func getLicenseTimeTotal() int {
 func TestThatMoreThanFiveSessionsWorkWithALicense(t *testing.T) {
 
 	var nbrIterations = 10
-	var costPerSession = 6
-	var totalTimeLicense = 1000
+	var costPerSession = 6      // Each session cost x nbr of analyzer minutes
+	var totalTimeLicense = 1000 // Total number of analyzer minutes specified in license
 
 	for i := 0; i < nbrIterations; i++ {
 		message, err := ConnectToEngineAndReturnOnConnectedEventMessage(ctx, i, headers)
@@ -86,8 +84,9 @@ func TestThatMoreThanFiveSessionsWorkWithALicense(t *testing.T) {
 	assert.Equal(t, nbrIterations, getNumberActiveQixSessions())
 
 	// Verify that the license time consumed reported on Licenses metrics matches the expected time consumed
-	assert.Equal(t, nbrIterations*costPerSession, getLicenseTimeConsumed())
+	licensesMetrics := getLicensesMetrics()
+	assert.Equal(t, nbrIterations*costPerSession, getLicenseTimeConsumed(licensesMetrics))
 
 	// Verify total license time reported in Licenses metrics is the expected value
-	assert.Equal(t, totalTimeLicense, getLicenseTimeTotal())
+	assert.Equal(t, totalTimeLicense, getLicenseTimeTotal(licensesMetrics))
 }

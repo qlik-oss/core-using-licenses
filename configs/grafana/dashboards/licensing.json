@@ -116,7 +116,7 @@
       "tableColumn": "__name__",
       "targets": [
         {
-          "expr": "qix_active_documents",
+          "expr": "qix_active_sessions",
           "format": "time_series",
           "intervalFactor": 1,
           "refId": "A"
@@ -124,7 +124,7 @@
       ],
       "thresholds": "",
       "timeFrom": null,
-      "title": "Active documents",
+      "title": "Active sessions in total",
       "type": "singlestat",
       "valueFontSize": "80%",
       "valueMaps": [
@@ -294,7 +294,7 @@
       "valueMaps": [
         {
           "op": "=",
-          "text": "N/A",
+          "text": "0",
           "value": "null"
         }
       ],
