@@ -37,3 +37,4 @@ ACCEPT_EULA=<yes/no> docker-compose -f docker-compose.engine-and-license-service
 ```
 
 You should now be able to monitor the current license consumption in the preconfigured `Grafana` dashboard [here](http://localhost:3000/d/license_monitoring/qlik-core-licensing-monitoring?refresh=5s&orgId=1).
+The dashboard will by default be updated every 5 seconds, so you can try out the monitoring by either using the test case mentioned in previous section or by opening sessions using [enigma-go](https://github.com/qlik-oss/enigma-go) or [enigma.js](https://github.com/qlik-oss/enigma.js).
