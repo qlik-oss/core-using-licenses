@@ -6,15 +6,15 @@ It also contains an example of how you could use the metrics of the Qlik License
 
 ## Using the community version of Qlik Core without a license
 
-The `docker-compose.only-engine.yml` file contains an example setup of only the Qlik Associative Engine.
+The [docker-compose.only-engine.yml](./docker-compose.only-engine)` file contains an example setup of only the Qlik Associative Engine.
 
 You start it by running the command `docker-compose -f docker-compose.only-engine.yml up -d`
 
-You could then if you have go installed verify that the Qlik Associtaive Engine only allows five concurrent sessions by running the command `go test test/no_license_test.go test/utils_test.go`
+You could then if you have go installed verify that the Qlik Associtaive Engine only allows five concurent sessions by running the command `go test test/no_license_test.go test/utils_test.go`
 
 ## Using Qlik Core with a license
 
-The `docker-compose.engine-and-license-service` file contains an example setup of the Qlik Associative Engine and the Qlik Licenses service.
+The [docker-compose.engine-and-license-service.yml](./docker-compose.engine-and-license-service.yml) file contains an example setup of the Qlik Associative Engine and the Qlik Licenses service.
 
 It contains the parameter `-S LicenseServiceUrl=http://licenses:9200` to the Qlik Associative Engine with the adress of the Qlik Licenses service as well as the environment variables `LICENSES_SERIAL_NBR` and `LICENSES_CONTROL_NBR` for the Qlik Licenses service.
 
