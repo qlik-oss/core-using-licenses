@@ -23,3 +23,15 @@ You can start it with the command `docker-compose -f docker-compose.engine-and-l
 By running the command `go test test/with_license_test.go test/utils_test.go` you could then verify that with a license more than five concurrent sessions could be created.
 
 ## Using the Qlik Licenses metrics to monitor your license usage
+
+Both the Qlik Analytics Engine and the Licenses service exposes metrics endpoints that can be used to monitor the current license status.
+The [docker-compose.metrics.yaml](./docker-compose.metrics.yml) sets up [Prometheus](https://prometheus.io/) and [Grafana](https://grafana.com/) that can be used for scraping, monitoring and visualizing the license consumption.
+In this example these two services will be configurated on startup with some basic configuration files for scraping the needed metrics and a preconfigured dashboard for license monitoring.
+
+To start the monitoring example:
+
+```bash
+ACCEPT_EULA=<yes/no> docker-compose -f docker-compose.engine-and-license-service -f docker-compose.metrics.yml up -d
+```
+
+You should now be able to monitor the current license consumption in the preconfigured `Grafana` dashboard [here](http://localhost:3000/d/license_monitoring/qlik-core-licensing-monitoring?refresh=5s&orgId=1).
