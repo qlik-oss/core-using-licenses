@@ -12,7 +12,7 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-type MetricsItem []struct {
+type Metrics []struct {
 	Name   string `json:"name"`
 	Metric Metric `json:"metric"`
 }
@@ -35,7 +35,7 @@ func getNumberActiveQixSessions() int {
 	resp, _ := client.Do(req)
 	body, _ := ioutil.ReadAll(resp.Body)
 
-	var metrics MetricsItem
+	var metrics Metrics
 	json.Unmarshal(body, &metrics)
 
 	var activeSessions int
