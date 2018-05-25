@@ -1,4 +1,6 @@
-# Core-using-licenses
+# Qlik Core Licensing Examples
+
+[![CircleCI](https://circleci.com/gh/qlik-oss/core-using-licenses.svg?style=shield)](https://circleci.com/gh/qlik-oss/core-using-licenses)
 
 This repo contains examples on how to set up the Qlik Licenses service as well as runnable tests to verify the setups.
 
