@@ -22,12 +22,12 @@ func getTestHost() string {
 var (
 	ctx     = context.Background()
 	headers = make(http.Header, 1)
-	Host    = getTestHost()
+	host    = getTestHost()
 )
 
 func ConnectToEngineAndReturnOnConnectedEventMessage(ctx context.Context, sessionID int, headers http.Header) (string, error) {
 	headers.Set("X-Qlik-Session", fmt.Sprintf("%d", sessionID))
-	global, err := enigma.Dialer{}.Dial(ctx, fmt.Sprintf("ws://%s:19076/app/engineData/", Host), headers)
+	global, err := enigma.Dialer{}.Dial(ctx, fmt.Sprintf("ws://%s:19076/app/engineData/", host), headers)
 
 	if err != nil {
 		fmt.Println(err.Error())

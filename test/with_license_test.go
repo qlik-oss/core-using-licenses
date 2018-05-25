@@ -30,7 +30,7 @@ var (
 )
 
 func getNumberActiveQixSessions() int {
-	req, _ := http.NewRequest("GET", fmt.Sprintf("http://%s:9090/metrics", Host), nil)
+	req, _ := http.NewRequest("GET", fmt.Sprintf("http://%s:9090/metrics", host), nil)
 	req.Header.Add("Accept", "application/json")
 	resp, _ := client.Do(req)
 	body, _ := ioutil.ReadAll(resp.Body)
@@ -48,7 +48,7 @@ func getNumberActiveQixSessions() int {
 }
 
 func getLicensesMetrics() string {
-	req, _ := http.NewRequest("GET", fmt.Sprintf("http://%s:9200/metrics", Host), nil)
+	req, _ := http.NewRequest("GET", fmt.Sprintf("http://%s:9200/metrics", host), nil)
 	resp, _ := client.Do(req)
 	body, _ := ioutil.ReadAll(resp.Body)
 	return string(body)
