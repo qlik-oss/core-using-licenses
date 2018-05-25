@@ -4,8 +4,6 @@ services:
 
   qix-engine:
     image: qlikcore/engine:12.171.0
-    deploy:
-      replicas: 2
     command: -S AcceptEULA=${ACCEPT_EULA} -S LicenseServiceUrl=http://licenses:9200 -S DisableStartupLicenseCheck=1 -S TrafficLogVerbosity=5 -S SystemLogVerbosity=5
     ports:
       - 19076:9076
