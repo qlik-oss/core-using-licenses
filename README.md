@@ -10,7 +10,7 @@ It also contains an example of how you could use the metrics of the Qlik License
 
 The [docker-compose.only-engine.yml](./docker-compose.only-engine)` file contains an example setup of only the Qlik Associative Engine.
 
-You start it by running the command `docker-compose -f docker-compose.only-engine.yml up -d`
+You start it by running the command `ACCEPT_EULA=<yes/no> docker-compose -f docker-compose.only-engine.yml up -d`
 
 You could then if you have go installed verify that the Qlik Associtaive Engine only allows five concurrent sessions by running the command `go test test/no_license_test.go test/utils_test.go`
 
@@ -20,7 +20,7 @@ The [docker-compose.engine-and-license-service.yml](./docker-compose.engine-and-
 
 It contains the parameter `-S LicenseServiceUrl=http://licenses:9200` to the Qlik Associative Engine with the adress of the Qlik Licenses service as well as the environment variables `LICENSES_SERIAL_NBR` and `LICENSES_CONTROL_NBR` for the Qlik Licenses service.
 
-You can start it with the command `docker-compose -f docker-compose.engine-and-license-service up -d` provided that you have populated the `LICENSES_SERIAL_NBR` and `LICENSES_CONTROL_NBR` environment variables with your license.
+You can start it with the command `ACCEPT_EULA=<yes/no> docker-compose -f docker-compose.engine-and-license-service up -d` provided that you have populated the `LICENSES_SERIAL_NBR` and `LICENSES_CONTROL_NBR` environment variables with your license.
 
 By running the command `go test test/with_license_test.go test/utils_test.go` you could then verify that with a license more than five concurrent sessions could be created.
 
@@ -33,7 +33,7 @@ In this example these two services will be configurated on startup with some bas
 To start the monitoring example:
 
 ```bash
-ACCEPT_EULA=<yes/no> docker-compose -f docker-compose.engine-and-license-service -f docker-compose.metrics.yml up -d
+ACCEPT_EULA=<yes/no> docker-compose -f docker-compose.engine-and-license-service.yml -f docker-compose.metrics.yml up -d
 ```
 
 You should now be able to monitor the current license consumption in the preconfigured `Grafana` dashboard [here](http://localhost:3000/d/license_monitoring/qlik-core-licensing-monitoring?refresh=5s&orgId=1).
