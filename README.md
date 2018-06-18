@@ -20,7 +20,7 @@ The [docker-compose.engine-and-license-service.yml](./docker-compose.engine-and-
 
 It contains the parameter `-S LicenseServiceUrl=http://licenses:9200` to the Qlik Associative Engine with the adress of the Qlik Licenses service as well as the environment variables `LICENSES_SERIAL_NBR` and `LICENSES_CONTROL_NBR` for the Qlik Licenses service.
 
-You can start it with the command `ACCEPT_EULA=<yes/no> docker-compose -f docker-compose.engine-and-license-service up -d` provided that you have populated the `LICENSES_SERIAL_NBR` and `LICENSES_CONTROL_NBR` environment variables with your license.
+You can start it with the command `ACCEPT_EULA=<yes/no> docker-compose -f docker-compose.engine-and-license-service.yml up -d` provided that you have populated the `LICENSES_SERIAL_NBR` and `LICENSES_CONTROL_NBR` environment variables with your license.
 
 By running the command `go test test/with_license_test.go test/utils_test.go` you could then verify that with a license more than five concurrent sessions could be created.
 
