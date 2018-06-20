@@ -12,7 +12,7 @@ services:
       qix-engine: ""
 
   licenses:
-    image: qlikcore/licenses:experimental
+    image: qlikcore/licenses:1.0.1
     environment:
       - LICENSES_SERIAL_NBR
       - LICENSES_CONTROL_NBR
