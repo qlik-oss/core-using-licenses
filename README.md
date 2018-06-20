@@ -40,7 +40,7 @@ A valid license allows you to run more than five concurrent sessions. You can ve
 go test test/with_license_test.go test/utils_test.go
 ```
 
-## Using the Qlik License service metrics to monitor your license usage
+## Using the Qlik Licenses service metrics to monitor your license usage
 
 Both the Qlik Associative Engine and the Qlik Licenses service expose metrics endpoints that can you can use to monitor the current license status.
 
