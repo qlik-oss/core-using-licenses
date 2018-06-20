@@ -2,7 +2,7 @@
 
 [![CircleCI](https://circleci.com/gh/qlik-oss/core-using-licenses.svg?style=shield)](https://circleci.com/gh/qlik-oss/core-using-licenses)
 
-This repository contains several examples that show you how to set up the Qlik License services with or without a license, and how to use Qlik License services metrics to monitor your license usage. Each example includes a runnable test to verify the setup. To run these tests, you should have Go installed.
+This repository contains several examples that show you how to set up the Qlik Licenses service with or without a license, and how to use licenses service metrics to monitor your license usage. Each example includes a runnable test to verify the setup. To run these tests, you should have Go installed.
 
 ## Using Qlik Core community version without a license
 
@@ -24,7 +24,7 @@ go test test/no_license_test.go test/utils_test.go
 
 The [docker-compose.engine-and-license-service.yml](./docker-compose.engine-and-license-service.yml) file contains an example configuration of the Qlik Associative Engine and the Qlik Licenses service.
 
-The `yml` file contains an address parameter to the Qlik License services: `-S LicenseServiceUrl=http://licenses:9200`. This tells Qlik Associative Engine where to find the Qlik License services.
+The `yml` file contains an address parameter: `-S LicenseServiceUrl=http://licenses:9200`. This tells Qlik Associative Engine where to find the licenses service.
 
 The `yml` file also contains two environment variables: `LICENSES_SERIAL_NBR` and `LICENSES_CONTROL_NBR`. You need to replace these variables with your license serial number and license control number.
 
@@ -42,7 +42,7 @@ go test test/with_license_test.go test/utils_test.go
 
 ## Using the Qlik License service metrics to monitor your license usage
 
-Both the Qlik Associative Engine and the Qlik License service expose metrics endpoints that can you can use to monitor the current license status.
+Both the Qlik Associative Engine and the Qlik Licenses service expose metrics endpoints that can you can use to monitor the current license status.
 
 The [docker-compose.metrics.yaml](./docker-compose.metrics.yml) sets up [Prometheus](https://prometheus.io/) and [Grafana](https://grafana.com/). Prometheus is used for scraping and monitoring license consumption data and Grafana is used to visualize that data.
 
