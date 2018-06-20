@@ -44,9 +44,7 @@ go test test/with_license_test.go test/utils_test.go
 
 Both the Qlik Associative Engine and the Qlik Licenses service expose metrics endpoints that can you can use to monitor the current license status.
 
-The [docker-compose.metrics.yaml](./docker-compose.metrics.yml) sets up [Prometheus](https://prometheus.io/) and [Grafana](https://grafana.com/). Prometheus is used for scraping and monitoring license consumption data and Grafana is used to visualize that data.
-
-In this example, these two services will be configured on startup. Prometheus is set up to scrape the relevant license metrics and Grafana is set up with a preconfigured dashboard for license monitoring.
+The [docker-compose.metrics.yaml](./docker-compose.metrics.yml) sets up [Prometheus](https://prometheus.io/) and [Grafana](https://grafana.com/). In this example, these two services will be configured on startup. Prometheus is set up to scrape the relevant license metrics and Grafana is set up with a preconfigured dashboard for license monitoring.
 
 To start the monitoring example, run the following command:
 
