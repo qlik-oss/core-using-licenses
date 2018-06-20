@@ -55,17 +55,17 @@ func getLicensesMetrics() string {
 }
 
 func getLicenseTimeConsumed(licensesMetrics string) int {
-	re := regexp.MustCompile(`\nlicense_time_consumption{.*}\s(\d+)\n`)
+	re := regexp.MustCompile(`\nlicense_time_consumption{.*}\s(.+)\n`)
 	matched := re.FindStringSubmatch(licensesMetrics)
-	timeConsumed, _ := strconv.Atoi(matched[1])
-	return timeConsumed
+	timeConsumed, _ := strconv.ParseFloat(matched[1], 64)
+	return int(timeConsumed)
 }
 
 func getLicenseTimeTotal(licensesMetrics string) int {
-	re := regexp.MustCompile(`\nlicense_time_total{.*}\s(\d+)\n`)
+	re := regexp.MustCompile(`\nlicense_time_total{.*}\s(.+)\n`)
 	matched := re.FindStringSubmatch(licensesMetrics)
-	totalTime, _ := strconv.Atoi(matched[1])
-	return totalTime
+	totalTime, _ := strconv.ParseFloat(matched[1], 64)
+	return int(totalTime)
 }
 
 func TestThatMoreThanFiveSessionsWorkWithALicense(t *testing.T) {
