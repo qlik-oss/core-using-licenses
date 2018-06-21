@@ -2,39 +2,56 @@
 
 [![CircleCI](https://circleci.com/gh/qlik-oss/core-using-licenses.svg?style=shield)](https://circleci.com/gh/qlik-oss/core-using-licenses)
 
-This repo contains examples on how to set up the Qlik Licenses service as well as runnable tests to verify the setups.
+This repository contains several examples that show you how to set up the Qlik Licenses service with or without a license, and how to use licenses service metrics to monitor your license usage. Each example includes a runnable test to verify the setup. To run these tests, you must have Go installed.
 
-It also contains an example of how you could use the metrics of the Qlik Licenses service to monitor your license usage.
+## Using Qlik Core community version without a license
 
-## Using the community version of Qlik Core without a license
+The [docker-compose.only-engine.yml](./docker-compose.only-engine) file contains an example configuration of the Qlik Associative Engine without a license.
 
-The [docker-compose.only-engine.yml](./docker-compose.only-engine)` file contains an example setup of only the Qlik Associative Engine.
+To start it, run the following command:
 
-You start it by running the command `ACCEPT_EULA=<yes/no> docker-compose -f docker-compose.only-engine.yml up -d`
+```bash
+ACCEPT_EULA=<yes/no> docker-compose -f docker-compose.only-engine.yml up -d
+```
 
-You could then if you have go installed verify that the Qlik Associtaive Engine only allows five concurrent sessions by running the command `go test test/no_license_test.go test/utils_test.go`
+You can verify that the Qlik Associtaive Engine only allows five concurrent sessions by running the following command:
+
+```bash
+go test test/no_license_test.go test/utils_test.go
+```
 
 ## Using Qlik Core with a license
 
-The [docker-compose.engine-and-license-service.yml](./docker-compose.engine-and-license-service.yml) file contains an example setup of the Qlik Associative Engine and the Qlik Licenses service.
+The [docker-compose.engine-and-license-service.yml](./docker-compose.engine-and-license-service.yml) file contains an example configuration of the Qlik Associative Engine and the Qlik Licenses service.
 
-It contains the parameter `-S LicenseServiceUrl=http://licenses:9200` to the Qlik Associative Engine with the adress of the Qlik Licenses service as well as the environment variables `LICENSES_SERIAL_NBR` and `LICENSES_CONTROL_NBR` for the Qlik Licenses service.
+The `yml` file contains an address parameter: `-S LicenseServiceUrl=http://licenses:9200`. This tells Qlik Associative Engine where to find the licenses service.
 
-You can start it with the command `ACCEPT_EULA=<yes/no> docker-compose -f docker-compose.engine-and-license-service.yml up -d` provided that you have populated the `LICENSES_SERIAL_NBR` and `LICENSES_CONTROL_NBR` environment variables with your license.
+The `yml` file also contains two environment variables: `LICENSES_SERIAL_NBR` and `LICENSES_CONTROL_NBR`. You need to replace these variables with your license serial number and license control number.
 
-By running the command `go test test/with_license_test.go test/utils_test.go` you could then verify that with a license more than five concurrent sessions could be created.
+To start it, run the following command:
 
-## Using the Qlik Licenses metrics to monitor your license usage
+```bash
+ACCEPT_EULA=<yes/no> docker-compose -f docker-compose.engine-and-license-service.yml up -d
+```
 
-Both the Qlik Analytics Engine and the Licenses service exposes metrics endpoints that can be used to monitor the current license status.
-The [docker-compose.metrics.yaml](./docker-compose.metrics.yml) sets up [Prometheus](https://prometheus.io/) and [Grafana](https://grafana.com/) that can be used for scraping, monitoring and visualizing the license consumption.
-In this example these two services will be configurated on startup with some basic configuration files for scraping the needed metrics and a preconfigured dashboard for license monitoring.
+A valid license allows you to run more than five concurrent sessions. You can verify the license by running the follow command:
 
-To start the monitoring example:
+```bash
+go test test/with_license_test.go test/utils_test.go
+```
+
+## Using the Qlik Licenses service metrics to monitor your license usage
+
+Both the Qlik Associative Engine and the Qlik Licenses service expose metrics endpoints that can you can use to monitor the current license status.
+
+The [docker-compose.metrics.yaml](./docker-compose.metrics.yml) sets up [Prometheus](https://prometheus.io/) and [Grafana](https://grafana.com/). In this example, these two services will be configured on startup. Prometheus is set up to scrape the relevant license metrics and Grafana is set up with a preconfigured dashboard for license monitoring.
+
+To start the monitoring example, run the following command:
 
 ```bash
 ACCEPT_EULA=<yes/no> docker-compose -f docker-compose.engine-and-license-service.yml -f docker-compose.metrics.yml up -d
 ```
 
-You should now be able to monitor the current license consumption in the preconfigured `Grafana` dashboard [here](http://localhost:3000/d/license_monitoring/qlik-core-licensing-monitoring?refresh=5s&orgId=1).
-The dashboard will by default be updated every 5 seconds, so you can try out the monitoring by either using the test case mentioned in previous section or by opening sessions using [enigma-go](https://github.com/qlik-oss/enigma-go) or [enigma.js](https://github.com/qlik-oss/enigma.js).
+You should now be able to monitor the current license consumption in the preconfigured Grafana dashboard [here](http://localhost:3000/d/license_monitoring/qlik-core-licensing-monitoring?refresh=5s&orgId=1).
+
+By default, the dashboard updates every 5 seconds. You can try out the monitoring by either using the test case mentioned in previous section, or by opening sessions using [enigma-go](https://github.com/qlik-oss/enigma-go) or [enigma.js](https://github.com/qlik-oss/enigma.js).
