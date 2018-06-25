@@ -71,8 +71,8 @@ func getLicenseTimeTotal(licensesMetrics string) int {
 func TestThatMoreThanFiveSessionsWorkWithALicense(t *testing.T) {
 
 	var nbrIterations = 10
-	var costPerSession = 6         // Each session cost x nbr of analyzer minutes
-	var totalTimeLicense = 1000000 // Total number of analyzer minutes specified in license
+	var costPerSession = 5         // Each session cost x nbr of analyzer minutes specified in the license
+	var totalTimeLicense = 1000000 // Total number of analyzer minutes specified in the license
 
 	for i := 0; i < nbrIterations; i++ {
 		message, err := ConnectToEngineAndReturnOnConnectedEventMessage(ctx, i, headers)
