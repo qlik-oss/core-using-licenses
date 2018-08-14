@@ -75,7 +75,7 @@ func TestThatMoreThanFiveSessionsWorkWithALicense(t *testing.T) {
 	var totalTimeLicense = 1000000 // Total number of analyzer minutes specified in the license
 
 	for i := 0; i < nbrIterations; i++ {
-		message, err := ConnectToEngineAndReturnOnConnectedEventMessage(ctx, i, headers)
+		message, err := ConnectToEngineAndReturnOnConnectedEventMessage(ctx, i)
 		assert.Equal(t, "SESSION_CREATED", message)
 		assert.Nil(t, err, "Connecting to engine should not give an error")
 	}
