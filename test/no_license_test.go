@@ -11,14 +11,14 @@ func TestThatFiveButNotMoreConcurentSessionsWork(t *testing.T) {
 
 	for i := 0; i < numberOfAllowedConnectionsWithNoLicenseService; i++ {
 
-		message, err := ConnectToEngineAndReturnOnConnectedEventMessage(ctx, i, headers)
+		message, err := ConnectToEngineAndReturnOnConnectedEventMessage(ctx, i)
 		assert.Equal(t, "SESSION_CREATED", message)
 		assert.Nil(t, err, "Connecting to engine should not give an error")
 
 	}
 
 	//One more connection than allowed, this should not be allowed
-	message, err := ConnectToEngineAndReturnOnConnectedEventMessage(ctx, numberOfAllowedConnectionsWithNoLicenseService+1, headers)
+	message, err := ConnectToEngineAndReturnOnConnectedEventMessage(ctx, numberOfAllowedConnectionsWithNoLicenseService+1)
 	assert.Equal(t, "SESSION_ERROR_LIMIT_EXCEEDED", message)
 	assert.Nil(t, err, "This session should not be allowed to be open")
 
