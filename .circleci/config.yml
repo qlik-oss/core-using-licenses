@@ -38,7 +38,7 @@ jobs:
             # Copy code into container
             docker cp /go/src/github.com/qlik-oss/core-using-licenses/ $TEST_CONTAINER:/go/src/license_test/
             # Execute tests
-            docker exec $TEST_CONTAINER sh -c 'go test -timeout 30s /go/src/license_test/test/no_license_test.go /go/src/license_test/test/utils_test.go'
+            docker exec $TEST_CONTAINER sh -c 'go test -timeout 30s /go/src/license_test/test/no_license_test.go /go/src/license_test/test/utils_test.go -count=1'
             # Bring down the docker-compose and test container
             docker-compose -f docker-compose.only-engine.yml down
             docker kill $TEST_CONTAINER
@@ -55,7 +55,7 @@ jobs:
             # Copy code into container
             docker cp /go/src/github.com/qlik-oss/core-using-licenses/ $TEST_CONTAINER:/go/src/license_test/
             # Execute tests
-            docker exec $TEST_CONTAINER sh -c 'go test -timeout 30s /go/src/license_test/test/with_license_test.go /go/src/license_test/test/utils_test.go'
+            docker exec $TEST_CONTAINER sh -c 'go test -timeout 30s /go/src/license_test/test/with_license_test.go /go/src/license_test/test/utils_test.go -count=1'
             # Bring down the docker-compose
             docker-compose -f docker-compose.engine-and-license-service.yml down
             docker kill $TEST_CONTAINER
