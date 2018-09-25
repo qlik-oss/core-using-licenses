@@ -74,6 +74,9 @@ func TestThatMoreThanFiveSessionsWorkWithALicense(t *testing.T) {
 	var costPerSession = 5         // Each session cost x nbr of analyzer minutes specified in the license
 	var totalTimeLicense = 1000000 // Total number of analyzer minutes specified in the license
 
+	licensesMetrics := getLicensesMetrics()
+	licenseTimeConsumedBeforeTest := getLicenseTimeConsumed(licensesMetrics)
+
 	for i := 0; i < nbrIterations; i++ {
 		message, err := ConnectToEngineAndReturnOnConnectedEventMessage(ctx, i)
 		assert.Equal(t, "SESSION_CREATED", message)
@@ -83,9 +86,11 @@ func TestThatMoreThanFiveSessionsWorkWithALicense(t *testing.T) {
 	// Verify that the number of active sessions in Qlik Analytics Engine metrics matches number of sessions opened in test case
 	assert.Equal(t, nbrIterations, getNumberActiveQixSessions())
 
+	licensesMetrics = getLicensesMetrics()
+	licenseTimeConsumedAfterTest := getLicenseTimeConsumed(licensesMetrics)
+
 	// Verify that the license time consumed reported on Licenses metrics matches the expected time consumed
-	licensesMetrics := getLicensesMetrics()
-	assert.Equal(t, nbrIterations*costPerSession, getLicenseTimeConsumed(licensesMetrics))
+	assert.Equal(t, nbrIterations*costPerSession, licenseTimeConsumedAfterTest-licenseTimeConsumedBeforeTest)
 
 	// Verify total license time reported in Licenses metrics is the expected value
 	assert.Equal(t, totalTimeLicense, getLicenseTimeTotal(licensesMetrics))
