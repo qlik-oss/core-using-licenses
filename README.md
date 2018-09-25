@@ -17,7 +17,7 @@ ACCEPT_EULA=<yes/no> docker-compose -f docker-compose.only-engine.yml up -d
 You can verify that the Qlik Associtaive Engine only allows five concurrent sessions by running the following command:
 
 ```bash
-go test test/no_license_test.go test/utils_test.go
+go test test/no_license_test.go test/utils_test.go -count=1
 ```
 
 ## Using Qlik Core with a license
@@ -37,7 +37,7 @@ ACCEPT_EULA=<yes/no> docker-compose -f docker-compose.engine-and-license-service
 A valid license allows you to run more than five concurrent sessions. You can verify the license and that the correct amount of the license has been consumed by running the follow command:
 
 ```bash
-go test test/with_license_test.go test/utils_test.go
+go test test/with_license_test.go test/utils_test.go -count=1
 ```
 
 ## Using the Qlik Licenses service metrics to monitor your license usage
