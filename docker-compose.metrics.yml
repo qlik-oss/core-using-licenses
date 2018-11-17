@@ -7,7 +7,7 @@ services:
     volumes:
       - ./configs/prometheus/config.yml:/etc/prometheus/config.yml
   grafana:
-    image: grafana/grafana:5.3.2
+    image: grafana/grafana:5.3.4
     ports:
       - "3000:3000"
     environment:
