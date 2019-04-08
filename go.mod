@@ -5,7 +5,7 @@ require (
 	github.com/gorilla/websocket v1.4.0 // indirect
 	github.com/pkg/errors v0.8.1 // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect
-	github.com/qlik-oss/enigma-go v0.0.0-20180507175441-6c169189b763
+	github.com/qlik-oss/enigma-go v0.0.0-20190406045520-c894cd83f055
 	github.com/stretchr/testify v1.3.0
 	golang.org/x/net v0.0.0-20190328230028-74de082e2cca // indirect
 )
