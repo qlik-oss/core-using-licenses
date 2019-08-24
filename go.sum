@@ -30,6 +30,7 @@ github.com/qlik-oss/enigma-go v0.0.0-20190622014635-ea72a4f56f64/go.mod h1:E2nkQ
 github.com/qlik-oss/enigma-go v0.0.0-20190629003655-2d3ac27be531/go.mod h1:70Eo/YjBqePRAZ1UkmxYpBY412inDgyTtBI4bZq6b80=
 github.com/qlik-oss/enigma-go v0.0.0-20190706005508-18ce36e6689e/go.mod h1:NdPfB2FwdBpYUQcPFi8MQsH336Rii3IA/p4QOeSIj7w=
 github.com/qlik-oss/enigma-go v0.0.0-20190810012733-768028da4d05/go.mod h1:zJVpIX29ESZZTg5Om8cVGS9wWrEn0HDa9b1IThFadJA=
+github.com/qlik-oss/enigma-go v0.0.0-20190824013038-0dbcc218eea0/go.mod h1:dtM2iRP3T6RS+0/U+FQcKHER6QPQ1wMAvc2dOI63TMA=
 github.com/ssor/bom v0.0.0-20170718123548-6386211fdfcf/go.mod h1:RJID2RhlZKId02nZ62WenDCkgHFerpIOmW0iT7GKmXM=
 github.com/stretchr/objx v0.1.0/go.mod h1:HFkY916IF+rwdDfMAkV7OtwuqBVzrE8GR6GFx+wExME=
 github.com/stretchr/testify v1.2.1 h1:52QO5WkIUcHGIR7EnGagH88x1bUzqGXTC5/1bDTUQ7U=
@@ -56,6 +57,7 @@ golang.org/x/net v0.0.0-20190615003416-d28f0bde5980/go.mod h1:z5CRVTTTmAJ677TzLL
 golang.org/x/net v0.0.0-20190622003425-3b0461eec859/go.mod h1:z5CRVTTTmAJ677TzLLGU+0bjPO0LkuOLi4/5GtJWs/s=
 golang.org/x/net v0.0.0-20190629003239-da137c7871d7/go.mod h1:z5CRVTTTmAJ677TzLLGU+0bjPO0LkuOLi4/5GtJWs/s=
 golang.org/x/net v0.0.0-20190727005952-ca1201d0de80/go.mod h1:z5CRVTTTmAJ677TzLLGU+0bjPO0LkuOLi4/5GtJWs/s=
+golang.org/x/net v0.0.0-20190819065259-74dc4d7220e7/go.mod h1:z5CRVTTTmAJ677TzLLGU+0bjPO0LkuOLi4/5GtJWs/s=
 golang.org/x/sys v0.0.0-20190215142949-d0b11bdaac8a/go.mod h1:STP8DvDyc/dI5b8T5hshtkjS+E42TnysNCUPdjciGhY=
 golang.org/x/text v0.3.0/go.mod h1:NqM8EUOU14njkJ3fqMW+pc6Ldnwhi/IjpwHt7yyuwOQ=
 gopkg.in/check.v1 v0.0.0-20161208181325-20d25e280405/go.mod h1:Co6ibVJAznAaIkqp8huTwlJQCZ016jof/cbN4VW5Yz0=
