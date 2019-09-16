@@ -35,6 +35,7 @@ github.com/qlik-oss/enigma-go v0.0.0-20190810012733-768028da4d05/go.mod h1:zJVpI
 github.com/qlik-oss/enigma-go v0.0.0-20190824013038-0dbcc218eea0/go.mod h1:dtM2iRP3T6RS+0/U+FQcKHER6QPQ1wMAvc2dOI63TMA=
 github.com/qlik-oss/enigma-go v0.0.0-20190827120132-54466f52b578/go.mod h1:X0e+FCCDLcBPSkMs7ziu+c4kJcIxMoNfg4gkb6YtZgI=
 github.com/qlik-oss/enigma-go v0.0.0-20190909090559-0eb41eef6a46/go.mod h1:c4itfc+HpxRzapKoZQES9W4ogdL2dW24J27MQ7meYgE=
+github.com/qlik-oss/enigma-go v0.0.0-20190910071017-102766272be1/go.mod h1:c4itfc+HpxRzapKoZQES9W4ogdL2dW24J27MQ7meYgE=
 github.com/ssor/bom v0.0.0-20170718123548-6386211fdfcf/go.mod h1:RJID2RhlZKId02nZ62WenDCkgHFerpIOmW0iT7GKmXM=
 github.com/stretchr/objx v0.1.0/go.mod h1:HFkY916IF+rwdDfMAkV7OtwuqBVzrE8GR6GFx+wExME=
 github.com/stretchr/testify v1.2.1 h1:52QO5WkIUcHGIR7EnGagH88x1bUzqGXTC5/1bDTUQ7U=
