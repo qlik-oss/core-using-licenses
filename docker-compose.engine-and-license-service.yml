@@ -14,8 +14,7 @@ services:
   licenses:
     image: qlikcore/licenses:1.37.0
     environment:
-      - LICENSES_SERIAL_NBR
-      - LICENSES_CONTROL_NBR
+      - LICENSE_KEY
       - LICENSES_LOG_LEVEL=debug
     ports:
       - 9200:9200

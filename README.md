@@ -26,7 +26,7 @@ The [docker-compose.engine-and-license-service.yml](./docker-compose.engine-and-
 
 The `yml` file contains an address parameter: `-S LicenseServiceUrl=http://licenses:9200`. This tells Qlik Associative Engine where to find the licenses service.
 
-The `yml` file also contains two environment variables: `LICENSES_SERIAL_NBR` and `LICENSES_CONTROL_NBR`. You need to replace these variables with your license serial number and license control number. You also need to specify your cost per session and your total license time as specified in your license on line [74 and 75](https://github.com/qlik-oss/core-using-licenses/blob/26c32f497c0973f69ad6122ffa2bdd0ce6e4b531/test/with_license_test.go#L74) in the file `test/with_license_test.go`
+The `yml` file also contains an environment variable `LICENSE_KEY`. This variable should be set to your license key. You also need to specify your cost per session and your total license time as specified in your license on line [74 and 75](https://github.com/qlik-oss/core-using-licenses/blob/26c32f497c0973f69ad6122ffa2bdd0ce6e4b531/test/with_license_test.go#L74) in the file `test/with_license_test.go`
 
 To start it, run the following command:
 
