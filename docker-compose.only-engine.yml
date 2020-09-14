@@ -3,8 +3,6 @@ version: "3.0"
 services:
   qix-engine:
     image: qlikcore/engine:12.792.0
-    deploy:
-      replicas: 2
     command: -S AcceptEULA=${ACCEPT_EULA} -S TrafficLogVerbosity=5 -S SystemLogVerbosity=5
     ports:
       - 19076:9076
