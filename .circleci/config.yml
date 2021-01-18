@@ -30,7 +30,7 @@ jobs:
             TEST_HOST=$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.Gateway}}{{end}}' "$CONTAINER_ID")
 
             # Start a container for test execution
-            TEST_CONTAINER=$(docker run -e TEST_HOST=$TEST_HOST -e CGO_ENABLED=0 -d golang:1.12-alpine tail -f /dev/null)
+            TEST_CONTAINER=$(docker run -e TEST_HOST=$TEST_HOST -e CGO_ENABLED=0 -d golang:1.15-alpine tail -f /dev/null)
             # Copy dependencies and code into container
             docker cp /go/pkg $TEST_CONTAINER:/go/pkg
             docker cp . $TEST_CONTAINER:/core-using-licenses
@@ -50,7 +50,7 @@ jobs:
             TEST_HOST=$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.Gateway}}{{end}}' "$CONTAINER_ID")
 
             # Start a container for test execution
-            TEST_CONTAINER=$(docker run -e TEST_HOST=$TEST_HOST -e CGO_ENABLED=0 -d golang:1.12-alpine tail -f /dev/null)
+            TEST_CONTAINER=$(docker run -e TEST_HOST=$TEST_HOST -e CGO_ENABLED=0 -d golang:1.15-alpine tail -f /dev/null)
             # Copy dependencies and code into container
             docker cp /go/pkg $TEST_CONTAINER:/go/pkg
             docker cp . $TEST_CONTAINER:/core-using-licenses
