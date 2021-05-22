@@ -2,12 +2,12 @@ version: "3.0"
 
 services:
   prometheus:
-    image: prom/prometheus:v2.27.0
+    image: prom/prometheus:v2.27.1
     command: '--config.file=/etc/prometheus/config.yml'
     volumes:
       - ./configs/prometheus/config.yml:/etc/prometheus/config.yml
   grafana:
-    image: grafana/grafana:7.5.6
+    image: grafana/grafana:7.5.7
     ports:
       - "3000:3000"
     environment:
