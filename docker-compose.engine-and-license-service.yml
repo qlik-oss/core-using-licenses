@@ -3,7 +3,7 @@ version: "3.0"
 services:
 
   qix-engine:
-    image: qlikcore/engine:12.1016.0
+    image: qlikcore/engine:12.1050.0
     command: -S AcceptEULA=${ACCEPT_EULA} -S LicenseServiceUrl=http://licenses:9200 -S TrafficLogVerbosity=5 -S SystemLogVerbosity=5
     ports:
       - 19076:9076
