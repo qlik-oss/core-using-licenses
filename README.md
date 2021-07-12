@@ -1,5 +1,7 @@
 # Qlik Core Licensing Examples
 
+*As of 1 July 2020, Qlik Core is no longer available to new customers. No further maintenance will be done in this repository.*
+
 [![CircleCI](https://circleci.com/gh/qlik-oss/core-using-licenses.svg?style=shield)](https://circleci.com/gh/qlik-oss/core-using-licenses)
 
 This repository contains several examples that show you how to set up the Qlik Licenses service with or without a license, and how to use licenses service metrics to monitor your license usage. Each example includes a runnable test to verify the setup. To run these tests, you must have Go installed.
